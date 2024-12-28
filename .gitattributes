@@ -1,0 +1,43 @@
+# specifying eol also specifies the file as text
+# git files
+.gitattributes eol=lf
+.gitignore eol=lf
+.git-blame-ignore-revs eol=lf
+
+# github
+.github* eol=lf
+
+*.sln text
+
+# *nix files, or cross-platform files that Windows tools should be able to handle as lf okay. 
+.editorconfig eol=lf
+.fantomasignore eol=lf
+*.csproj eol=lf
+*.css eol=lf
+*.fs eol=lf
+*.fsi eol=lf
+*.fsproj eol=lf
+*.fsx eol=lf
+*.html eol=lf
+*.js eol=lf
+*.json eol=lf
+*.jsx eol=lf
+*.md eol=lf
+*.props eol=lf
+*.proto eol=lf
+*.ps1 eol=lf
+*.sh eol=lf
+*.sql eol=lf
+*.svg eol=lf
+*.targets eol=lf
+*.ts eol=lf
+*.tsx eol=lf
+*.yaml eol=lf
+*.yml eol=lf
+Dockerfile eol=lf
+nuget.config eol=lf
+VERSION eol=lf
+
+# binaries (normally not needed -- binary is git's default -- it's to mitigate an over-eager
+# rule from wreaking havoc)
+*.png binary
