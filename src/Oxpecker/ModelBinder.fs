@@ -1,4 +1,4 @@
-﻿namespace Oxpecker
+namespace Oxpecker
 
 open System
 open System.Collections.Generic
@@ -61,7 +61,7 @@ module internal ModelParser =
             | false -> false, false, Unchecked.defaultof<Type>
 
         if t.IsArray then
-            let arrArgType = t.GetElementType() |> Unchecked.nonNull
+            let arrArgType = t.GetElementType() |> Option.ofObj |> Option.get
             let arrLen = rawValues.Count
             let arr = Array.CreateInstance(arrArgType, arrLen)
             if arrLen = 0 then

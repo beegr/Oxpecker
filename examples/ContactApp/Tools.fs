@@ -14,7 +14,7 @@ let getFlashedMessage (ctx: HttpContext) =
         string msg
     | _ ->
         match ctx.Request.Cookies.TryGetValue("message") with
-        | true, NonNull msg ->
+        | true, msg ->
             ctx.Response.Cookies.Delete("message")
             msg
         | _ ->

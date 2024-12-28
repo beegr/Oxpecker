@@ -15,8 +15,8 @@ let private runCase folderName caseName =
     |> Output.toExitCode
     |> shouldEqual 0
 
-    let result = File.ReadAllText($"{dir}/{caseName}.fs.js")
-    let expected = File.ReadAllText($"{dir}/{caseName}.expected")
+    let result = File.ReadAllLines($"{dir}/{caseName}.fs.js")
+    let expected = File.ReadAllLines($"{dir}/{caseName}.expected")
     result |> shouldEqual expected
 
 let runGeneralCase caseName =

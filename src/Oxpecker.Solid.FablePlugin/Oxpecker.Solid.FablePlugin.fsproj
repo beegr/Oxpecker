@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -24,7 +24,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Fable.AST" Version="4.5.0" />
+        <PackageReference Include="FSharp.Core" />
+        <PackageReference Include="Fable.AST" />
     </ItemGroup>
 
     <ItemGroup>
