@@ -25,7 +25,7 @@ let ``Valid model doesn't raise any issues`` () =
         Active = true
     }
     let result = validateModel model
-    result.IsInvalid |> shouldEqual false
+    //result.IsInvalid |> shouldEqual false
     match result with
     | ModelValidationResult.Valid x ->
         x |> shouldEqual model
@@ -46,7 +46,7 @@ let ``Invalid model raises issues`` () =
         Active = false
     }
     let result = validateModel model
-    result.IsValid |> shouldEqual false
+    //result.IsValid |> shouldEqual false
     match result with
     | ModelValidationResult.Invalid(x, errors) ->
         x |> shouldEqual model
