@@ -1,4 +1,4 @@
-﻿open System
+open System
 open System.Threading.Tasks
 open Microsoft.AspNetCore.Authorization
 open Microsoft.AspNetCore.Builder
@@ -89,7 +89,7 @@ let handler11: EndpointHandler =
 
 let closedHandler: EndpointHandler =
     fun (ctx: HttpContext) ->
-        if ctx.Request.Path.Value |> Unchecked.nonNull |> _.Contains("closed") then
+        if ctx.Request.Path.Value (* |> Unchecked.nonNull *) |> _.Contains("closed") then
             ctx.SetStatusCode 401
             json {| Status = "Unauthorized" |} ctx
         else
@@ -241,7 +241,7 @@ let configureApp (appBuilder: IApplicationBuilder) =
     appBuilder.UseRouting().Use(errorHandler).UseOxpecker(endpoints).Run(notFoundHandler)
 
 let configureServices (services: IServiceCollection) =
-    services.AddRouting().AddOxpecker().AddOpenApi() |> ignore
+    services.AddRouting().AddOxpecker() |> ignore
 
 
 [<EntryPoint>]
@@ -250,6 +250,5 @@ let main args =
     configureServices builder.Services
     let app = builder.Build()
     configureApp app
-    app.MapOpenApi() |> ignore
     app.Run()
     0
