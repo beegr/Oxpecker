@@ -108,10 +108,10 @@ module CustomWebUtility =
         | -1 -> -1
         | index -> findEncodingCharLoop index input
 
-    let htmlEncode (value: string | null) (sb: StringBuilder) =
+    let htmlEncode (value: string (* null *) ) (sb: StringBuilder) =
         match value with
-        | Null -> sb.Append(value) |> ignore
-        | NonNull value ->
+        | null -> sb.Append(value) |> ignore
+        | _ ->
             let value = value.AsSpan()
             match indexOfHtmlEncodingChar value with
             | -1 -> sb.Append(value) |> ignore

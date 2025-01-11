@@ -11,7 +11,7 @@ module ModelValidation =
     type ValidationErrors(errors: ResizeArray<ValidationResult>) =
         let errorDict =
             lazy
-                (let dict = Dictionary<string, ResizeArray<string | null>>()
+                (let dict = Dictionary<string, ResizeArray<string (* null *) >>()
                  for error in errors do
                      for memberName in error.MemberNames do
                          match dict.TryGetValue(memberName) with
@@ -28,7 +28,7 @@ module ModelValidation =
         /// <summary>
         /// Get all error messages for a specific model field (could to be used with `nameof` funciton).
         /// </summary>
-        member this.ErrorMessagesFor(name) : seq<string | null> =
+        member this.ErrorMessagesFor(name) : seq<string (* null *) > =
             match errorDict.Value.TryGetValue(name) with
             | true, value -> value
             | false, _ -> Array.empty
@@ -49,7 +49,7 @@ module ModelValidation =
         /// <summary>
         /// Pass an accessor function to get the string value of a model field (could be used with shorthand lambda).
         /// </summary>
-        member this.Value(f: 'T -> string | null) =
+        member this.Value(f: 'T -> string (* null *) ) =
             match this with
             | Empty -> null
             | Valid model -> f model
