@@ -25,7 +25,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Fable.AST" Version="4.5.0" />
+        <PackageReference Include="Fable.AST" />
     </ItemGroup>
 
     <ItemGroup>

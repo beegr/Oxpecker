@@ -1,5 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9EDF9D3C-DA11-44A2-A20C-4B466FEB7E06}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Packages.props = src\Directory.Packages.props
+	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Oxpecker.ViewEngine", "src\Oxpecker.ViewEngine\Oxpecker.ViewEngine.fsproj", "{5B941B9A-A787-47BA-94D2-77869FA929DB}"
 EndProject
