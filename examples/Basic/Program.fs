@@ -1,4 +1,4 @@
-﻿open System
+open System
 open System.Threading.Tasks
 open Microsoft.AspNetCore.Authorization
 open Microsoft.AspNetCore.Builder
@@ -89,7 +89,7 @@ let handler11: EndpointHandler =
 
 let closedHandler: EndpointHandler =
     fun (ctx: HttpContext) ->
-        if ctx.Request.Path.Value |> Unchecked.nonNull |> _.Contains("closed") then
+        if ctx.Request.Path.Value (* |> Unchecked.nonNull *) |> _.Contains("closed") then
             ctx.SetStatusCode 401
             json {| Status = "Unauthorized" |} ctx
         else
@@ -149,7 +149,7 @@ let endpoints = [
     GET [
         route "/" <| text "Hello World"
         route "/iresult" <| %Ok {| Text = "Hello World" |}
-        route "/ibadResult" <| % BadRequest()
+        route "/ibadResult" <| %BadRequest()
         routef "/text/{%s}" text
         |> configureEndpoint _.WithName("GetText")
         |> addOpenApiSimple<unit, string>
@@ -238,14 +238,10 @@ let errorHandler (ctx: HttpContext) (next: RequestDelegate) =
     :> Task
 
 let configureApp (appBuilder: IApplicationBuilder) =
-    appBuilder
-        .UseRouting()
-        .Use(errorHandler)
-        .UseOxpecker(endpoints)
-        .Run(notFoundHandler)
+    appBuilder.UseRouting().Use(errorHandler).UseOxpecker(endpoints).Run(notFoundHandler)
 
 let configureServices (services: IServiceCollection) =
-    services.AddRouting().AddOxpecker().AddOpenApi() |> ignore
+    services.AddRouting().AddOxpecker() |> ignore
 
 
 [<EntryPoint>]
@@ -254,6 +250,5 @@ let main args =
     configureServices builder.Services
     let app = builder.Build()
     configureApp app
-    app.MapOpenApi() |> ignore
     app.Run()
     0

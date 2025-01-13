@@ -44,7 +44,7 @@ module internal rec AST =
         | _ -> None
 
     let (|TagNoChildren|_|) (expr: Expr) =
-        let condition = _.Selector.EndsWith("_$ctor")
+        let condition (ii: ImportInfo) = ii.Selector.EndsWith("_$ctor")
         match expr with
         | CallTag condition (tagName, _, range) -> Some(tagName, range)
         | _ -> None

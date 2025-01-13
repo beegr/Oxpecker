@@ -1,4 +1,4 @@
-﻿namespace Oxpecker
+namespace Oxpecker
 
 open System.Threading.Tasks
 
@@ -43,8 +43,8 @@ module ResponseCaching =
 
             if varyByQueryKeys.IsSome then
                 match ctx.Features.Get<IResponseCachingFeature>() with
-                | NonNull responseCachingFeature -> responseCachingFeature.VaryByQueryKeys <- varyByQueryKeys.Value
-                | Null -> ()
+                | null -> ()
+                | responseCachingFeature -> responseCachingFeature.VaryByQueryKeys <- varyByQueryKeys.Value
 
             Task.CompletedTask
 

@@ -2,15 +2,16 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Fable.Browser.Dom" Version="2.18.0" />
-    <PackageReference Include="Fable.Core" Version="4.3.0" />
-    <PackageReference Include="Thoth.Fetch" Version="3.0.1" />
-    <PackageReference Include="Oxpecker.Solid" Version="0.4.2" />
+    <PackageReference Include="Fable.Browser.Dom" />
+    <PackageReference Include="Fable.Core" />
+    <PackageReference Include="Thoth.Fetch" />
+    <PackageReference Include="Oxpecker.Solid" />
+    <ProjectReference Include="..\Shared\Shared.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,10 +28,6 @@
     <TypeScriptCompile Include="vite.config.ts" />
     <Content Include="postcss.config.js" />
     <Content Include="tailwind.config.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\Shared.fsproj" />
   </ItemGroup>
 
 </Project>

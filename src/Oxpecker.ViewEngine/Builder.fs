@@ -8,7 +8,10 @@ open Tools
 module Builder =
 
     [<Struct>]
-    type HtmlAttribute = { Name: string; Value: string | null }
+    type HtmlAttribute = {
+        Name: string
+        Value: string (* null *)
+    }
 
     type HtmlElement =
         abstract member Render: StringBuilder -> unit
@@ -86,13 +89,13 @@ module Builder =
             member this.AddAttribute attribute = this.AddAttribute attribute
 
     /// Text node that will be HTML-escaped
-    type RegularTextNode(text: string | null) =
+    type RegularTextNode(text: string (* null *) ) =
         member this.Render(sb: StringBuilder) = sb |> CustomWebUtility.htmlEncode text
         interface HtmlElement with
             member this.Render sb = this.Render sb
 
     /// Text node that will NOT be HTML-escaped
-    type RawTextNode(text: string | null) =
+    type RawTextNode(text: string (* null *) ) =
         member this.Render(sb: StringBuilder) = text |> sb.Append |> ignore
         interface HtmlElement with
             member this.Render sb = this.Render sb
@@ -127,7 +130,7 @@ module Builder =
                 for element in elements do
                     builder.AddChild(element)
 
-        member inline _.Yield(text: string | null) : HtmlContainerFun = _.AddChild(RegularTextNode text)
+        member inline _.Yield(text: string (* null *) ) : HtmlContainerFun = _.AddChild(RegularTextNode text)
 
     type HtmlContainerExtensions =
         [<Extension>]

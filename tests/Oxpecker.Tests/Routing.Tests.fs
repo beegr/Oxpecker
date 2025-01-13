@@ -1,4 +1,4 @@
-﻿module Oxpecker.Tests.Routing
+module Oxpecker.Tests.Routing
 
 open System
 open System.Net
@@ -478,15 +478,15 @@ let ``subRoute: configureEndpoint inside subRoute`` () =
         let mutable innerMetadata = Unchecked.defaultof<EndpointMetadataCollection>
         let endpoints = [
             route "/" (fun ctx ->
-                rootMetadata <- ctx.GetEndpoint() |> Unchecked.nonNull |> _.Metadata
+                rootMetadata <- ctx.GetEndpoint() (* |> Unchecked.nonNull *) |> _.Metadata
                 ctx.WriteText "")
             GET [
                 route "/get" (fun ctx ->
-                    getMetadata <- ctx.GetEndpoint() |> Unchecked.nonNull |> _.Metadata
+                    getMetadata <- ctx.GetEndpoint() (* |> Unchecked.nonNull *) |> _.Metadata
                     ctx.WriteText "Hello World")
                 subRoute "/api" [
                     routef "/inner" (fun ctx ->
-                        innerMetadata <- ctx.GetEndpoint() |> Unchecked.nonNull |> _.Metadata
+                        innerMetadata <- ctx.GetEndpoint() (* |> Unchecked.nonNull *) |> _.Metadata
                         ctx.WriteText "Hi")
                 ]
                 |> configureEndpoint _.ShortCircuit()

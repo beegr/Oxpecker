@@ -19,19 +19,22 @@
         <Authors>Vladimir Shchur and contributors</Authors>
         <Copyright>Copyright (c) Vladimir Shchur 2024</Copyright>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Version>0.4.2</Version>
-        <PackageVersion>0.4.2</PackageVersion>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <Version>0.5.2</Version>
+        <PackageVersion>0.5.2</PackageVersion>
         <PackageReleaseNotes>Prevent useNavigator being compiled as tag</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Fable.Core" Version="4.3.0" />
-        <PackageReference Include="Fable.Browser.Dom" Version="2.18.0" />
-        <PackageReference Include="Fable.Package.SDK" Version="1.3.0">
+        <PackageReference Include="FSharp.Core" />
+        <PackageReference Include="Fable.Core" />
+        <PackageReference Include="Fable.Browser.Dom" />
+        <PackageReference Include="Fable.Package.SDK">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Oxpecker.Solid.FablePlugin" Version="0.4.2" />
+        <PackageReference Include="Oxpecker.Solid.FablePlugin" />
     </ItemGroup>
 
     <ItemGroup>

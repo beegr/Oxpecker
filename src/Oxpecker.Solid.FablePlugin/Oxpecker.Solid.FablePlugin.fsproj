@@ -1,7 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>6.0</LangVersion>
         <WarningsAsErrors>3239;0025</WarningsAsErrors>
         <PackageId>Oxpecker.Solid.FablePlugin</PackageId>
         <Title>Oxpecker.Solid.FablePlugin</Title>
@@ -18,13 +19,15 @@
         <Authors>Vladimir Shchur and contributors</Authors>
         <Copyright>Copyright (c) Vladimir Shchur 2024</Copyright>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Version>0.4.2</Version>
-        <PackageVersion>0.4.2</PackageVersion>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <Version>0.5.2</Version>
+        <PackageVersion>0.5.2</PackageVersion>
         <PackageReleaseNotes>Prevent useNavigator being compiled as tag</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Fable.AST" Version="4.5.0" />
+        <PackageReference Include="Fable.AST" />
     </ItemGroup>
 
     <ItemGroup>

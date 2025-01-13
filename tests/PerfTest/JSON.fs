@@ -97,7 +97,7 @@ module SpanJson =
                         ctx.Response.Headers.ContentLength <- buffer.Count
                         if ctx.Request.Method <> HttpMethods.Head then
                             do! ctx.Response.Body.WriteAsync(buffer)
-                        ArrayPool<byte>.Shared.Return(buffer.Array |> Unchecked.nonNull)
+                        ArrayPool<byte>.Shared.Return(buffer.Array (* |> Unchecked.nonNull *) )
                     }
 
             member this.Deserialize(ctx) = failwith "Not implemented"
@@ -108,10 +108,7 @@ module SpanJson =
                 .UseKestrel()
                 .Configure(fun app -> app.UseRouting().UseOxpecker(endpoints) |> ignore)
                 .ConfigureServices(fun services ->
-                    services
-                        .AddRouting()
-                        .AddOxpecker()
-                        .AddSingleton<IJsonSerializer>(SpanJsonSerializer())
+                    services.AddRouting().AddOxpecker().AddSingleton<IJsonSerializer>(SpanJsonSerializer())
                     |> ignore)
         new TestServer(builder)
 

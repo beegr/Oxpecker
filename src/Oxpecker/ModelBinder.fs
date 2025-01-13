@@ -1,4 +1,4 @@
-﻿namespace Oxpecker
+namespace Oxpecker
 
 open System
 open System.Collections.Generic
@@ -51,7 +51,11 @@ module internal ModelParser =
             FSharpValue.MakeUnion(cases[1], [| value |])
 
     /// Returns either a successfully parsed object `'T` or a `string` error message containing the parsing error.
-    let rec private parseValue (t: Type) (rawValues: StringValues) (culture: CultureInfo) : Result<obj | null, string> =
+    let rec private parseValue
+        (t: Type)
+        (rawValues: StringValues)
+        (culture: CultureInfo)
+        : Result<obj (* null *) , string> =
 
         // First establish some basic type information:
         let isGeneric = t.IsGeneric()
@@ -61,7 +65,7 @@ module internal ModelParser =
             | false -> false, false, Unchecked.defaultof<Type>
 
         if t.IsArray then
-            let arrArgType = t.GetElementType() |> Unchecked.nonNull
+            let arrArgType = t.GetElementType() (* |> Unchecked.nonNull *)
             let arrLen = rawValues.Count
             let arr = Array.CreateInstance(arrArgType, arrLen)
             if arrLen = 0 then
@@ -69,7 +73,7 @@ module internal ModelParser =
             else
                 let items, _, error =
                     Array.fold
-                        (fun (items: Array, idx: int, error: string option) (rawValue: string | null) ->
+                        (fun (items: Array, idx: int, error: string option) (rawValue: string (* null *) ) ->
                             let nIdx = idx + 1
                             match error with
                             | Some _ -> arr, nIdx, error
@@ -93,7 +97,7 @@ module internal ModelParser =
                 let consCase = cases[1]
                 let items, error =
                     Array.foldBack
-                        (fun (rawValue: string | null) (items: obj | null, error: string option) ->
+                        (fun (rawValue: string (* null *) ) (items: obj (* null *) , error: string option) ->
                             match error with
                             | Some _ -> emptyList, error
                             | None ->

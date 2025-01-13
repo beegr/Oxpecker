@@ -52,4 +52,4 @@ module Helpers =
     /// <summary>
     /// Boxes value with return type obj (not objnull).
     /// </summary>
-    let inline boxv<'a when 'a: struct> (v: 'a) = box v |> Unchecked.nonNull
+    let inline boxv<'a when 'a: struct> (v: 'a) = box v (* |> Unchecked.nonNull *)
