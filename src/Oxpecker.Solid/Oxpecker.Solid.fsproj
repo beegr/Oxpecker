@@ -21,8 +21,8 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <Version>0.4.2</Version>
-        <PackageVersion>0.4.2</PackageVersion>
+        <Version>0.5.2</Version>
+        <PackageVersion>0.5.2</PackageVersion>
         <PackageReleaseNotes>Prevent useNavigator being compiled as tag</PackageReleaseNotes>
     </PropertyGroup>
 

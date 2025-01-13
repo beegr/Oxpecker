@@ -20,8 +20,8 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <Version>1.0.1</Version>
-        <PackageVersion>1.0.1</PackageVersion>
+        <Version>1.1.1</Version>
+        <PackageVersion>1.1.1</PackageVersion>
         <PackageReleaseNotes>Added explicit flush when rendering to Stream and TextWriter</PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
