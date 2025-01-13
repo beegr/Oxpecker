@@ -6,7 +6,7 @@ open Xunit
 open FsUnitTyped
 
 type Model = {
-    Name: string | null
+    Name: string (* null *)
     [<Range(0, 100)>]
     Age: int
     [<Required>]

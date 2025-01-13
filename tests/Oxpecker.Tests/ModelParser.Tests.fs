@@ -12,14 +12,14 @@ type Sex =
     | Female
 
 [<CLIMutable>]
-type Child = { Name: string | null; Age: int }
+type Child = { Name: string (* null *) ; Age: int }
 
 [<CLIMutable>]
 type Model = {
     Id: Guid
-    FirstName: string | null
+    FirstName: string (* null *)
     MiddleName: string option
-    LastName: string | null
+    LastName: string (* null *)
     Sex: Sex
     BirthDate: DateTime
     Nicknames: string list option
