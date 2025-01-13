@@ -19,6 +19,8 @@
         <Authors>Vladimir Shchur and contributors</Authors>
         <Copyright>Copyright (c) Vladimir Shchur 2024</Copyright>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <Version>0.4.2</Version>
         <PackageVersion>0.4.2</PackageVersion>
         <PackageReleaseNotes>Prevent useNavigator being compiled as tag</PackageReleaseNotes>
